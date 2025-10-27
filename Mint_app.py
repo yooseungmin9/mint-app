@@ -1,6 +1,6 @@
 import streamlit as st
 import folium
-from streamlit_folium import folium_static
+from streamlit_folium import st_folium
 import pandas as pd
 import requests
 from datetime import datetime
@@ -171,8 +171,8 @@ if 'traffic_data' in st.session_state and not st.session_state.traffic_data.empt
     if 'last_update' in st.session_state:
         st.info(f"📅 마지막 업데이트: {st.session_state.last_update}")
     
-    # 지도 표시
-    folium_static(create_traffic_map(df), width=1000, height=600)
+    # 지도 표시 (수정됨)
+    st_folium(create_traffic_map(df), width=1000, height=600, returned_objects=[])
     
     # 통계 메트릭
     col1, col2, col3, col4 = st.columns(4)
@@ -185,10 +185,10 @@ if 'traffic_data' in st.session_state and not st.session_state.traffic_data.empt
     with col4:
         st.metric("**평균 속도**", f"{df['avg_speed'].mean():.1f}km/h")
     
-    # 상세 정보 테이블
+    # 상세 정보 테이블 (수정됨)
     st.subheader("📊 행정구별 상세 교통정보")
     formatted_df = format_dataframe_for_display(df)
-    st.dataframe(formatted_df, use_container_width=True, hide_index=True)
+    st.dataframe(formatted_df, width='stretch', hide_index=True)
     
 else:
     st.warning("교통 데이터를 불러올 수 없습니다. 새로고침 버튼을 눌러주세요.")
