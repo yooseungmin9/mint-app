@@ -37,7 +37,7 @@ with st.sidebar:
 @st.cache_data(ttl=300)
 def fetch_data():
     """API 데이터 가져오기"""
-    api_key = "6591754531"  # API 키 하드코딩
+    api_key = "L5PyqDviKAL0jSdGt5iPksot8IwBbYS7R27iyt6kKB0q6A+A2TS6Cn/cJ5CCsBWFPB/M+pgxnZwQiAhp9+TQ0A=="
     try:
         response = requests.get(
             "https://data.ex.co.kr/openapi/trafficapi/trafficAll",
